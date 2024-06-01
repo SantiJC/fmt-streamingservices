@@ -4,25 +4,25 @@ import pandas as pd
 import altair as alt
 
 # Page title
-st.set_page_config(page_title='Interactive Data Explorer', page_icon='📊')
-st.title('📊 Interactive Data Explorer')
+st.set_page_config(page_title='Streaming Service Classifier', page_icon='📊')
+st.title('📊 Streaming Service Classifier')
 
 with st.expander('About this app'):
   st.markdown('**What can this app do?**')
-  st.info('This app shows the use of Pandas for data wrangling, Altair for chart creation and editable dataframe for data interaction.')
-  st.markdown('**How to use the app?**')
-  st.warning('To engage with the app, 1. Select genres of your interest in the drop-down selection box and then 2. Select the year duration from the slider widget. As a result, this should generate an updated editable DataFrame and line plot.')
+  st.info('This app shows the best Straming Service you could subscribe to depending on your interests')
   
-st.subheader('Which Movie Genre performs ($) best at the box office?')
+st.subheader('Which Movie Genres you like most?')
 
 # Load data
-df = pd.read_csv('data/movies_genres_summary.csv')
-df.year = df.year.astype('int')
+df = pd.read_csv('data/Data_No_Outliers.csv')
+
 
 # Input widgets
 ## Genres selection
-genres_list = df.genre.unique()
-genres_selection = st.multiselect('Select genres', genres_list, ['Action', 'Adventure', 'Biography', 'Comedy', 'Drama', 'Horror'])
+genres_list = ['action', 'animation', 'comedy', 'crime', 'documentation', 'drama', 
+ 'european', 'family', 'fantasy', 'history', 'horror', 'music', 'reality', 
+ 'romance', 'scifi', 'sport', 'thriller', 'war', 'western']
+genres_selection = st.multiselect('Select genres', genres_list)
 
 ## Year selection
 year_list = df.year.unique()
