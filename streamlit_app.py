@@ -219,71 +219,80 @@ else:
     asia = 0
 
 # Train the model
-X = df_train.drop(columns=["Streaming_Service"])
-Y = df_train["Streaming_Service"]
-X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.2, random_state=42)
+try:
+  X = df_train.drop(columns=["Streaming_Service"])
+  Y = df_train["Streaming_Service"]
+  X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.2, random_state=42)
 
-model = RandomForestClassifier(n_estimators = 200, random_state=42)
-model.fit(X_train, Y_train)
+  model = RandomForestClassifier(n_estimators = 200, random_state=42)
+  model.fit(X_train, Y_train)
+  new_case = pd.DataFrame({
+      "runtime": [duration],
+      "seasons": [seasons],
+      "imdb_score": [score],
+      "action": [action],
+      "animation": [animation],
+      "comedy": [comedy],
+      "crime": [crime],
+      "documentation": [documentation],
+      "drama": [drama],
+      "european": [european],
+      "family": [family],
+      "fantasy": [fantasy],
+      "history": [history],
+      "horror": [horror],
+      "music": [music],
+      "reality": [reality],
+      "romance": [romance],
+      "scifi": [scifi],
+      "sport": [sport],
+      "thriller": [thriller],
+      "war": [war],
+      "western": [western],
+      "América del Sur": [america_sur],
+      "América del Norte": [america_norte],
+      "África": [africa],
+      "Europa": [europa],
+      "Oceanía": [oceania],
+      "Asia": [asia],
+      "type_SHOW": [show],
+      "release_year_1970s": [year1970],
+      "release_year_1980s": [year1980],
+      "release_year_1990s": [year1990],
+      "release_year_2000s": [year2000],
+      "release_year_2010s": [year2010],
+      "release_year_2020s": [year2020],
+      "release_year_<1970": [year1]
+  })
 
+
+  prediction = model.predict(new_case)
+  prediction = str(prediction).replace("['", "").replace("']", "")
+  st.markdown(f"<h1 style='text-align: center;'>{prediction}</h1>", unsafe_allow_html=True)
+except:
+  st.markdown("<h1 style='text-align: center;'>Complete the fields above</h1>", unsafe_allow_html=True)
 
 # Create the dataframe to show
-new_case = pd.DataFrame({
-    "runtime": [duration],
-    "seasons": [seasons],
-    "imdb_score": [score],
-    "action": [action],
-    "animation": [animation],
-    "comedy": [comedy],
-    "crime": [crime],
-    "documentation": [documentation],
-    "drama": [drama],
-    "european": [european],
-    "family": [family],
-    "fantasy": [fantasy],
-    "history": [history],
-    "horror": [horror],
-    "music": [music],
-    "reality": [reality],
-    "romance": [romance],
-    "scifi": [scifi],
-    "sport": [sport],
-    "thriller": [thriller],
-    "war": [war],
-    "western": [western],
-    "América del Sur": [america_sur],
-    "América del Norte": [america_norte],
-    "África": [africa],
-    "Europa": [europa],
-    "Oceanía": [oceania],
-    "Asia": [asia],
-    "type_SHOW": [show],
-    "release_year_1970s": [year1970],
-    "release_year_1980s": [year1980],
-    "release_year_1990s": [year1990],
-    "release_year_2000s": [year2000],
-    "release_year_2010s": [year2010],
-    "release_year_2020s": [year2020],
-    "release_year_<1970": [year1]
-})
 
 
 
-prediction = model.predict(new_case)
-print(prediction)
-
-# Display DataFrame
 
 
-df_editor = st.data_editor(reshaped_df, height=212, use_container_width=True,
-                            column_config={"year": st.column_config.TextColumn("Year")},
-                            num_rows="dynamic")
-df_chart = pd.melt(df_editor.reset_index(), id_vars='year', var_name='genre', value_name='gross')
 
-# Display chart
-chart = alt.Chart(df_chart).mark_line().encode(
-            x=alt.X('year:N', title='Year'),
-            y=alt.Y('gross:Q', title='Gross earnings ($)'),
-            color='genre:N'
-            ).properties(height=320)
-st.altair_chart(chart, use_container_width=True)
+
+
+# # Display DataFrame
+
+
+# df_editor = st.data_editor(reshaped_df, height=212, use_container_width=True,
+#                             column_config={"year": st.column_config.TextColumn("Year")},
+#                             num_rows="dynamic")
+# df_chart = pd.melt(df_editor.reset_index(), id_vars='year', var_name='genre', value_name='gross')
+
+# # Display chart
+# chart = alt.Chart(df_chart).mark_line().encode(
+#             x=alt.X('year:N', title='Year'),
+#             y=alt.Y('gross:Q', title='Gross earnings ($)'),
+#             color='genre:N'
+#             ).properties(height=320)
+# st.altair_chart(chart, use_container_width=True)
