@@ -58,7 +58,6 @@ zone = st.multiselect('Select the production location', locations)
 
 
 
-
 if 'release_year_<1970' in year_selection:
   year1 = 1
 else: 
@@ -222,7 +221,6 @@ else:
 # Train the model
 X = df_train.drop(columns=["Streaming_Service"])
 Y = df_train["Streaming_Service"]
-
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.2, random_state=42)
 
 model = RandomForestClassifier(n_estimators = 200, random_state=42)
@@ -268,6 +266,7 @@ new_case = pd.DataFrame({
     "release_year_2020s": [year2020],
     "release_year_<1970": [year1]
 })
+
 
 
 prediction = model.predict(new_case)
