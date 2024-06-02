@@ -269,6 +269,74 @@ try:
   prediction = model.predict(new_case)
   prediction = str(prediction).replace("['", "").replace("']", "")
   st.markdown(f"<h1 style='text-align: center;'>{prediction}</h1>", unsafe_allow_html=True)
+
+  results = []
+  for x in new_case.columns:
+      y = int(new_case[x])
+      if y != 0:
+          results.append(y)
+      elif y == 0:
+          results.append(y) 
+  if results[28] == 1:
+    movie_show = "MOVIE"
+  elif results[28] == 0:
+    movie_show = "SHOW"
+
+  streaming_service_condition = df["Streaming_Service"] == prediction
+  type_show_condition = df["type"] == movie_show
+  columns_and_indices = [
+    ("runtime", 0),
+    ("seasons", 1),
+    ("imdb_score", 2),
+    ("action", 3),
+    ("animation", 4),
+    ("comedy", 5),
+    ("crime", 6),
+    ("documentation", 7),
+    ("drama", 8),
+    ("european", 9),
+    ("family", 10),
+    ("fantasy", 11),
+    ("history", 12),
+    ("horror", 13),
+    ("music", 14),
+    ("reality", 15),
+    ("romance", 16),
+    ("scifi", 17),
+    ("sport", 18),
+    ("thriller", 19),
+    ("war", 20),
+    ("western", 21),
+    ("América del Sur", 22),
+    ("América del Norte", 23),
+    ("África", 24),
+    ("Europa", 25),
+    ("Oceanía", 26),
+    ("Asia", 27),
+    ("release_year_1970s", 29),
+    ("release_year_1980s", 30),
+    ("release_year_1990s", 31),
+    ("release_year_2000s", 32),
+    ("release_year_2010s", 33),
+    ("release_year_2020s", 34),
+    ("release_year_<1970", 35)
+  ]
+  additional_conditions = []
+  for column, index in columns_and_indices:
+    if results[index] != 0:
+        additional_conditions.append(df[column] == results[index])
+  if additional_conditions:
+      combined_condition = additional_conditions[0]
+      for condition in additional_conditions[1:]:
+          combined_condition = combined_condition | condition
+      final_condition = streaming_service_condition & type_show_condition & combined_condition
+  else:
+    final_condition = streaming_service_condition & type_show_condition
+  df_predicted = df[final_condition]
+  df_predicted = df_predicted.drop(columns=["Index","imdb_id", "imdb_votes", "tmdb_popularity", "tmdb_score", 'action', 'animation', 'comedy', 'crime', 'documentation', 'drama', 
+  'european', 'family', 'fantasy', 'history', 'horror', 'music', 'reality', 
+  'romance', 'scifi', 'sport', 'thriller', 'war', 'western', 'age_certification', 'id']).sort_values(by="imdb_score", ascending=False)
+  st.dataframe(df_predicted)
 except:
   st.markdown("<h1 style='text-align: center;'>Complete the fields above</h1>", unsafe_allow_html=True)
 
