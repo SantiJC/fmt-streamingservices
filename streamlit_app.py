@@ -336,7 +336,7 @@ try:
   df_predicted = df_predicted.drop(columns=["Index","imdb_id", "imdb_votes", "tmdb_popularity", "tmdb_score", 'action', 'animation', 'comedy', 'crime', 'documentation', 'drama', 
   'european', 'family', 'fantasy', 'history', 'horror', 'music', 'reality', 
   'romance', 'scifi', 'sport', 'thriller', 'war', 'western', 'age_certification', 'id']).sort_values(by="imdb_score", ascending=False)
-  st.dataframe(df_predicted)
+  st.dataframe(df_predicted.head(50))
 except:
   st.markdown("<h1 style='text-align: center;'>Complete the fields above</h1>", unsafe_allow_html=True)
 
