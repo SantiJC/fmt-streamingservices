@@ -340,7 +340,7 @@ try:
   'european', 'family', 'fantasy', 'history', 'horror', 'music', 'reality', 
   'romance', 'scifi', 'sport', 'thriller', 'war', 'western', 'age_certification', 'id', 'América del Norte', 'América del Sur', 'África', 'Europa', 'Oceanía', 'Asia', 'Antártida']).sort_values(by="imdb_score", ascending=False)
   
-  st.markdown(f"Top 10 best {selection} for {prediction} are:")
+  st.markdown(f"Top 10 best {selection} that match your preferences in {prediction} are:")
   st.dataframe(df_predicted.head(10))
 except:
   st.markdown("<h1 style='text-align: center;'>Complete the fields above</h1>", unsafe_allow_html=True)
