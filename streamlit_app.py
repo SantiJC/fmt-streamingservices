@@ -12,7 +12,7 @@ st.title('📊 Streaming Service Classifier')
 
 with st.expander('About this app'):
   st.markdown('**What can this app do?**')
-  st.info('This app shows the best Straming Service among Netflix, Primer Video, Hulu, Disney + and HBO MAX you could subscribe to depending on your interests')
+  st.info('This app shows the best Straming Service among Netflix, Primer Video, Hulu, Disney + and HBO MAX that you could subscribe to depending on your interests')
   
 st.subheader('Which Movie Genres you like most?')
 
@@ -336,7 +336,7 @@ try:
   df_predicted = df_predicted.drop(columns=["Index","imdb_id", "imdb_votes", "tmdb_popularity", "tmdb_score", 'action', 'animation', 'comedy', 'crime', 'documentation', 'drama', 
   'european', 'family', 'fantasy', 'history', 'horror', 'music', 'reality', 
   'romance', 'scifi', 'sport', 'thriller', 'war', 'western', 'age_certification', 'id', 'América del Norte', 'América del Sur', 'África', 'Europa', 'Oceanía', 'Asia', 'Antártida']).sort_values(by="imdb_score", ascending=False)
-  st.dataframe(df_predicted.head(50))
+  st.dataframe(df_predicted.head(10))
 except:
   st.markdown("<h1 style='text-align: center;'>Complete the fields above</h1>", unsafe_allow_html=True)
 
