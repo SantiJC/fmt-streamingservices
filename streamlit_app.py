@@ -270,6 +270,7 @@ try:
 
   prediction = model.predict(new_case)
   prediction = str(prediction).replace("['", "").replace("']", "")
+  st.divider()
   st.markdown("<h2 style='text-align: left;'>Your recommended streaming service is:</h2>", unsafe_allow_html=True)
   st.markdown(f"<h1 style='text-align: center;'>{prediction}</h1>", unsafe_allow_html=True)
 
