@@ -12,7 +12,7 @@ st.title('📊 Streaming Service Classifier')
 
 with st.expander('About this app'):
   st.markdown('**What can this app do?**')
-  st.info('This app shows the best Straming Service you could subscribe to depending on your interests')
+  st.info('This app shows the best Straming Service among Netflix, Primer Video, Hulu, Disney + and HBO MAX you could subscribe to depending on your interests')
   
 st.subheader('Which Movie Genres you like most?')
 
