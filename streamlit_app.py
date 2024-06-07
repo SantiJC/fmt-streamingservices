@@ -29,7 +29,7 @@ genres_list = ['action', 'animation', 'comedy', 'crime', 'documentation', 'drama
 genres_selection = st.multiselect('Select genres', genres_list)
 
 ## Year selection
-year_list = set(df["release_year"])
+year_list = sorted(set(df["release_year"]))
 
 year_selection = st.multiselect('Select release years', year_list)
 
