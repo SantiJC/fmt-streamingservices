@@ -29,8 +29,7 @@ genres_list = ['action', 'animation', 'comedy', 'crime', 'documentation', 'drama
 genres_selection = st.multiselect('Select genres', genres_list)
 
 ## Year selection
-year_list = ['release_year_<1970','release_year_1970s', 'release_year_1980s', 'release_year_1990s', 
- 'release_year_2000s', 'release_year_2010s', 'release_year_2020s']
+year_list = set(df["release_year"])
 
 year_selection = st.multiselect('Select release years', year_list)
 
@@ -343,7 +342,7 @@ try:
   
   st.divider()
   st.markdown(f"Top 10 best {selection} that match your preferences in {prediction} are:")
-  st.dataframe(df_predicted.head(10))
+  st.dataframe(df_predicted.head(20))
 except:
   st.markdown("<h1 style='text-align: center;'>Complete the fields above</h1>", unsafe_allow_html=True)
 
