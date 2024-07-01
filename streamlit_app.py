@@ -323,6 +323,8 @@ columns_and_indices = [
   ("release_year_2020s", 34),
   ("release_year_<1970", 35)
 ]
+st.dataframe(df.head(5))
+st.dataframe(results.head(5))
 additional_conditions = []
 for column, index in columns_and_indices:
   if results[index] != 0:
