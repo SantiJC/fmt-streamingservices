@@ -324,8 +324,8 @@ columns_and_indices = [
   ("release_year_2020s", 34),
   ("release_year_<1970", 35)
 ]
-df = df.drop("release_year", axis=1)
-st.dataframe(df.head(5))
+
+st.dataframe(df.drop("release_year",axis=1).head(5))
 st.markdown(results)
 additional_conditions = []
 for column, index in columns_and_indices:
