@@ -325,8 +325,7 @@ columns_and_indices = [
   ("release_year_<1970", 35)
 ]
 
-st.dataframe(df.drop("release_year",axis=1).head(5))
-st.markdown(results)
+
 additional_conditions = []
 for column, index in columns_and_indices:
   if results[index] != 0:
