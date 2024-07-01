@@ -20,7 +20,7 @@ st.subheader('Which Movie Genres you like most?')
 df = pd.read_csv('data/Data_No_Outliers.csv')
 df_train = pd.read_csv('data/df_train.csv')
 
-st.dataframe(df.head(5))
+
 
 # Input widgets
 ## Genres selection
@@ -324,6 +324,7 @@ columns_and_indices = [
   ("release_year_2020s", 34),
   ("release_year_<1970", 35)
 ]
+df = df.drop("release_year", axis=1)
 st.dataframe(df.head(5))
 st.markdown(results)
 additional_conditions = []
