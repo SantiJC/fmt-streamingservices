@@ -12,7 +12,7 @@ st.title('📊 Streaming Service Classifier')
 
 with st.expander('About this app'):
   st.markdown('**What can this app do?**')
-  st.info('This app shows the best Straming Service among Netflix, Primer Video, Hulu, Disney + and HBO MAX that you could subscribe to depending on your interests')
+  st.info('This app shows the best Straming Service among Netflix, Prime Video, Hulu, Disney + and HBO MAX that you could subscribe to depending on your interests')
   
 st.subheader('Which Movie Genres you like most?')
 
@@ -33,6 +33,7 @@ year_list = sorted(set(df["release_year"]))
 
 year_selection = st.multiselect('Select release years', year_list)
 
+st.markdown(f'{year_selection}')
 
 type = st.selectbox("Select between Movie or Show", set(df["type"]))
 
