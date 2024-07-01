@@ -20,6 +20,7 @@ st.subheader('Which Movie Genres you like most?')
 df = pd.read_csv('data/Data_No_Outliers.csv')
 df_train = pd.read_csv('data/df_train.csv')
 
+st.dataframe(df.head(5))
 
 # Input widgets
 ## Genres selection
