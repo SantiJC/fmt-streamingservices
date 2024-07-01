@@ -87,7 +87,7 @@ if '2020s' in year_selection:
 else:
   year2020 = 0
 
-st.markdown(f'{year1},{year1970}')
+
 
 
 if 'action' in genres_selection:
@@ -345,4 +345,3 @@ try:
   st.dataframe(df_predicted.head(20))
 except:
   st.markdown("<h1 style='text-align: center;'>Complete the fields above</h1>", unsafe_allow_html=True)
-
