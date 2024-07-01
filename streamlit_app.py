@@ -33,8 +33,6 @@ year_list = sorted(set(df["release_year"]))
 
 year_selection = st.multiselect('Select release years', year_list)
 
-st.markdown(f'{year_selection}')
-
 type = st.selectbox("Select between Movie or Show", set(df["type"]))
 
 if type == "SHOW":
@@ -89,7 +87,7 @@ if '2020s' in year_selection:
 else:
   year2020 = 0
 
-
+st.markdown(f'{year1},{year1970}')
 
 
 if 'action' in genres_selection:
