@@ -30,8 +30,8 @@ genres_list = ['action', 'animation', 'comedy', 'crime', 'documentation', 'drama
 genres_selection = st.multiselect('Select genres', genres_list)
 
 ## Year selection
-year_list = year_list = ['release_year_<1970','release_year_1970s', 'release_year_1980s', 'release_year_1990s', 
- 'release_year_2000s', 'release_year_2010s', 'release_year_2020s']
+year_list = year_list = ['<1970s','1970s', '1980s', '1990s', 
+ '2000s', '2010s', '2020s']
 
 year_selection = st.multiselect('Select release years', year_list)
 
@@ -60,31 +60,31 @@ zone = st.multiselect('Select the production location', locations)
 
 
 
-if 'release_year_<1970' in year_selection:
+if '<1970s' in year_selection:
   year1 = 1
 else: 
   year1 = 0
-if 'release_year_1970s' in year_selection:
+if '1970s' in year_selection:
   year1970 = 1
 else:
   year1970 = 0
-if 'release_year_1980s' in year_selection:
+if '1980s' in year_selection:
   year1980 = 1
 else:
   year1980 = 0
-if 'release_year_1990s' in year_selection:
+if '1990s' in year_selection:
   year1990 = 1
 else:
   year1990 = 0
-if 'release_year_2000s' in year_selection:
+if '2000s' in year_selection:
   year2000 = 1
 else:
   year2000 = 0
-if 'release_year_2010s' in year_selection:
+if '2010s' in year_selection:
   year2010 = 1
 else:
   year2010 = 0
-if 'release_year_2020s' in year_selection:
+if '2020s' in year_selection:
   year2020 = 1
 else:
   year2020 = 0
