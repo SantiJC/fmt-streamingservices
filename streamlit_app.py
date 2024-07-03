@@ -339,6 +339,26 @@ try:
   else:
     final_condition = streaming_service_condition & type_show_condition
   df_predicted = df[final_condition]
+
+  years=[]
+  for a,b,c,d,e,f,g in zip(df_predicted["release_year_1970s"],df_predicted["release_year_1980s"],df_predicted["release_year_1990s"],df_predicted["release_year_2000s"],df_predicted["release_year_2010s"],df_predicted["release_year_2020s"],df_predicted["release_year_<1970"]):
+    if a is True:
+      years.append("1970s")
+    elif b is True:
+      years.append("1980s")
+    elif c is True:
+      years.append("1990s")
+    elif d is True:
+      years.append("2000s")
+    elif e is True:
+      years.append("2010s")
+    elif f is True:
+      years.append("2020s")
+    elif g is True:
+      years.append("<1970s")
+
+  df_predicted["release_year"] = years
+
   df_predicted = df_predicted.drop(columns=["Index","imdb_id", "imdb_votes", "tmdb_popularity", "tmdb_score", 'action', 'animation', 'comedy', 'crime', 'documentation', 'drama', 
   'european', 'family', 'fantasy', 'history', 'horror', 'music', 'reality', 
   'romance', 'scifi', 'sport', 'thriller', 'war', 'western', 'age_certification', 'id', 'América del Norte', 'América del Sur', 'África', 'Europa', 'Oceanía', 'Asia', 'Antártida']).sort_values(by="imdb_score", ascending=False)
