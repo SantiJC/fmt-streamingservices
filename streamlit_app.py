@@ -361,7 +361,8 @@ try:
 
   df_predicted = df_predicted.drop(columns=["Index","imdb_id", "imdb_votes", "tmdb_popularity", "tmdb_score", 'action', 'animation', 'comedy', 'crime', 'documentation', 'drama', 
   'european', 'family', 'fantasy', 'history', 'horror', 'music', 'reality', 
-  'romance', 'scifi', 'sport', 'thriller', 'war', 'western', 'age_certification', 'id', 'América del Norte', 'América del Sur', 'África', 'Europa', 'Oceanía', 'Asia', 'Antártida']).sort_values(by="imdb_score", ascending=False)
+  'romance', 'scifi', 'sport', 'thriller', 'war', 'western', 'age_certification', 'id', 'América del Norte', 'América del Sur', 'África', 'Europa', 'Oceanía', 'Asia', 'Antártida',
+  'release_year_1970s', 'release_year_1980s', 'release_year_1990s', 'release_year_2000s', 'release_year_2010s', 'release_year_2020s', 'release_year_<1970']).sort_values(by="imdb_score", ascending=False)
 
   st.divider()
   st.markdown(f"Top 20 best {selection} that match your preferences in {prediction} are:")
